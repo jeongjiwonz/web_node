@@ -19,11 +19,10 @@ module.exports.joinValidator = async (req, res, next) => {
 		객체 -> for 속성명 in 객체
 	*/
 	const required = {
-		petNm : '반려견 이름을 입력해 주세요.',
 		memId : "아이디를 입력하세요",
 		memPw : "비밀번호를 입력하세요",
 		memPwRe : "비밀번호를 확인해 주세요.",
-		memNm : "회원명을 입력해 주세요.",
+		memNm : "회원명을 입력해 주세요."
 	};
 	
 	try {
@@ -37,10 +36,6 @@ module.exports.joinValidator = async (req, res, next) => {
 		/** 아이디, 비밀번호 자리수 */
 		if (req.body.memId.length < 6) {
 			throw new Error('아이디는 6자리 이상 입력해 주세요.');
-		}
-		
-		if(req.body.petNm.length < 1){
-			throw new Error('강아지 이름을 입력해 주세요.')
 		}
 		
 		if (req.body.memPw.length < 6) {

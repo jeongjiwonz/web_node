@@ -1,19 +1,6 @@
+{% extends '../layout.html' %}
 {% block content %}
-<form method="post" action="/member/join" class='join'>
-<div class= 'join'>
-	<dl>
-		<dt>반겨련 이름</dt>
-		<dd>
-			<input type="text" name="petNm">
-		</dd>
-	</dl>	
-	<dl>
-		<dt>보호자명</dt>
-		<dd>
-			<input type="text" name="memNm">
-		</dd>
-	</dl>
-	<dl>
+<form method="post" action="/member/join">
 	<dl>
 		<dt>아이디</dt>
 		<dd>
@@ -32,8 +19,12 @@
 			<input type="password" name="memPwRe">
 		</dd>
 	</dl>
+	<dl>
+		<dt>회원명</dt>
+		<dd>
+			<input type="text" name="memNm">
+		</dd>
+	</dl>
 	<input type="submit" value="회원가입">
-	</div>
-	
 </form>
 {% endblock %}

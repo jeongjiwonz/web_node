@@ -6,13 +6,15 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
 const logger = require('./lib/logger');
-
+const bootStrap = require('./boot');
 
 // 라우터
 const indexRouter = require('./routes');
 const memberRouter = require('./routes/member')
-
-
+const noticeRouter = require('./routes/notice')
+const scheduleRouter = require('./routes/schedule');
+const schedule2Router = require('./routes/schedule2');
+const introRouter = require('./routes/notice')
 const app = express();
 
 dotenv.config();
@@ -26,6 +28,16 @@ nunjucks.configure(path.join(__dirname,'views'),{
 app.set('PORT',process.env.PORT||3000);
 
 app.use(morgan('dev'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(session({
+	resave : false,
+	saveUninitialized : true,
+	secret : process.env.COOKIE_SECRET,
+	name : 'yhsession'
+}));
+
+app.use(bootStrap); // 사이트 초기화 미들웨어
+
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
@@ -34,6 +46,10 @@ app.use(express.urlencoded({extended:false}));
 // 라우터 등록
 app.use(indexRouter);
 app.use('/member',memberRouter);
+app.use(noticeRouter);
+app.use(introRouter);
+app.use("/schedule", scheduleRouter);
+app.use("/schedule2", schedule2Router);
 
 // 없는 페이지 라우터
 app.use((req,res,next)=>{
