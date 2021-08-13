@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+* { 
+	font-family: 'Nanum Gothic', sans-serif; 
+	box-sizing: border-box;
+	color: #313131;
+}
+
+html { 
+	font-size: 13px; /** 1rem - 13px */
+}
+.header{
+	font-size: 50px;
+	text-align:center;
+}
+.menu1{
+	background:darkslateblue;
+	padding:15px;
+	border-radius : 5px;
+	height:100px;
+	text-align:center;
+	vertical-align:middle;
+	line-height:60px;
+}
+.menu1 a{
+	color:white;
+	padding: 10px;
+	font-size: 25px;
+}
+.join{
+	background:gray;
+}
